@@ -4,6 +4,11 @@
 #include "framework.h"
 #include "Editor_Window.h"
 
+#include "..\\MJ_Engine_Source\MJ_Application.h"
+#include "..\\MJ_Engine_Window\MJ_LoadScenes.h"
+
+MJ::Application application;
+
 #define MAX_LOADSTRING 100
 
 // 전역 변수:
@@ -43,12 +48,18 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     MSG msg;
 
     // 기본 메시지 루프입니다:
-    while (GetMessage(&msg, nullptr, 0, 0))
-    {
-        if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+    while (true) {
+        if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE)) {
+            if (msg.message == WM_QUIT) break;
+
+            if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg)) {
+                TranslateMessage(&msg);
+                DispatchMessage(&msg);
+            }
+        }
+        else
         {
-            TranslateMessage(&msg);
-            DispatchMessage(&msg);
+            application.Run();
         }
     }
 
@@ -99,6 +110,11 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
       CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
+    
+
+   const UINT width = 1600;
+   const UINT height = 900;
+   application.Initialize(hWnd, width, height);
 
    if (!hWnd)
    {
@@ -107,6 +123,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
+
+   //load Scene
+   MJ::LoadScenes();
 
    return TRUE;
 }
