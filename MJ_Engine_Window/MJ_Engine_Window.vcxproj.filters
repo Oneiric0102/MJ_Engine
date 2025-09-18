@@ -10,8 +10,10 @@
       <Filter>Scenes</Filter>
     </ClInclude>
     <ClInclude Include="MJ_PlayScene.h" />
+    <ClInclude Include="MJ_Player.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MJ_PlayScene.cpp" />
+    <ClCompile Include="MJ_Player.cpp" />
   </ItemGroup>
 </Project>

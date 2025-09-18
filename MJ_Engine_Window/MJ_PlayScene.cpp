@@ -1,5 +1,7 @@
 #include "MJ_PlayScene.h"
-#include "MJ_GameObject.h"
+#include "MJ_Player.h"
+#include "MJ_Transform.h"
+#include "MJ_SpriteRenderer.h"
 
 namespace MJ{
 	PlayScene::PlayScene()
@@ -10,8 +12,16 @@ namespace MJ{
 	}
 	void PlayScene::Initialize()
 	{
-		GameObject* obj = new GameObject();
-		AddGameObject(obj);
+		Player* pl = new Player();
+		Transform* tr = pl->AddComponent < Transform>();
+		tr->SetPos(800, 450);
+		tr->SetName(L"TR");
+
+		SpriteRenderer* sr = pl->AddComponent<SpriteRenderer>();
+		sr->SetName(L"SR");
+
+		AddGameObject(pl);
+
 	}
 	void PlayScene::Update()
 	{
