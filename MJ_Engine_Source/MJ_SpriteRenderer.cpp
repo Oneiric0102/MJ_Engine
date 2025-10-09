@@ -4,6 +4,9 @@
 
 namespace MJ {
 	SpriteRenderer::SpriteRenderer()
+		: mImage(nullptr)
+		,mWidth(0)
+		,mHeight(0)
 	{
 	}
 
@@ -25,21 +28,17 @@ namespace MJ {
 
 	void SpriteRenderer::Render(HDC hdc)
 	{
-		HBRUSH purpleBrush = CreateSolidBrush(RGB(255, 0, 255));
-
-		HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, purpleBrush);
-
-		HPEN randPen = CreatePen(PS_SOLID, 2, RGB(rand() % 255, rand() % 255, rand() % 255));
-		HPEN oldPen = (HPEN)SelectObject(hdc, randPen);
-
 		Transform* tr = GetOwner()->GetComponent <Transform>();
-		Rectangle(hdc, tr->GetX(), tr->GetY(), 100 + tr->GetX(), 100 + tr->GetY());
+		Vector2 pos = tr->GetPosition();
 
-		SelectObject(hdc, oldBrush);
-		SelectObject(hdc, oldPen);
-		DeleteObject(purpleBrush);
-		DeleteObject(randPen);
+		Gdiplus::Graphics graphics(hdc);
+		graphics.DrawImage(mImage, Gdiplus::Rect(pos.x, pos.y, mWidth, mHeight));
 	}
 
+	void SpriteRenderer::ImageLoad(const std::wstring& path) {
+		mImage = Gdiplus::Image::FromFile(path.c_str());
+		mWidth = mImage->GetWidth();
+		mHeight = mImage->GetHeight();
+	}
 }
 

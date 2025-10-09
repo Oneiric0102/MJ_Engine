@@ -12,16 +12,16 @@ namespace MJ{
 	}
 	void PlayScene::Initialize()
 	{
-		Player* pl = new Player();
-		Transform* tr = pl->AddComponent < Transform>();
-		tr->SetPos(800, 450);
+		Player* bg = new Player();
+		Transform* tr = bg->AddComponent < Transform>();
+		tr->SetPos(Vector2(0, 0));
+
 		tr->SetName(L"TR");
 
-		SpriteRenderer* sr = pl->AddComponent<SpriteRenderer>();
+		SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();
 		sr->SetName(L"SR");
-
-		AddGameObject(pl);
-
+		sr->ImageLoad(L"C:\\Users\\ndmjl\\source\\repos\\MJEngine\\Resources\\CloudOcean.png");
+		AddGameObject(bg);
 	}
 	void PlayScene::Update()
 	{
