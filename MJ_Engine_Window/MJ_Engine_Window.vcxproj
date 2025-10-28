@@ -131,10 +131,12 @@
     <ClInclude Include="MJ_LoadScenes.h" />
     <ClInclude Include="MJ_Player.h" />
     <ClInclude Include="MJ_PlayScene.h" />
+    <ClInclude Include="MJ_TitleScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MJ_Player.cpp" />
     <ClCompile Include="MJ_PlayScene.cpp" />
+    <ClCompile Include="MJ_TitleScene.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

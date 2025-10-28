@@ -1,21 +1,34 @@
 #include "MJ_Player.h"
+#include "MJ_Input.h"
+#include "MJ_Transform.h"
+#include "MJ_Time.h"
 
-void MJ::Player::Initialize()
+namespace MJ
 {
-	GameObject::Initialize();
-}
+	void Player::Initialize()
+	{
+		GameObject::Initialize();
+	}
 
-void MJ::Player::Update()
-{
-	GameObject::Update();
-}
+	void Player::Update()
+	{
+		GameObject::Update();
+	}
 
-void MJ::Player::LateUpdate()
-{
-	GameObject::LateUpdate();
-}
+	void Player::LateUpdate()
+	{
+		GameObject::LateUpdate();
 
-void MJ::Player::Render(HDC hdc)
-{
-	GameObject::Render(hdc);
+		if (Input::GetKey(eKeyCode::Right)) {
+			Transform* tr = GetComponent<Transform>();
+			Vector2 pos = tr->GetPosition();
+			pos.x += 100.0f * Time::DeltaTime();
+			tr->SetPos(pos);
+		}
+	}
+
+	void Player::Render(HDC hdc)
+	{
+		GameObject::Render(hdc);
+	}
 }
