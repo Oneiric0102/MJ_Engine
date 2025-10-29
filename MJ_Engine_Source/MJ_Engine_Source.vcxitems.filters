@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Application.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Component.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Input.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Layer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Resource.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Scene.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_SceneManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_SpriteRenderer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Time.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Transform.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Entity.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Math.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_GameObject.cpp">
+      <Filter>GameObject</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Application.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Component.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Input.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Layer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Resource.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Scene.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_SceneManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_SpriteRenderer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Time.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Transform.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Entity.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Enums.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Math.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_GameObject.h">
+      <Filter>GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Object.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Common">
+      <UniqueIdentifier>{a379e56d-7f11-4712-9e2a-8e63a5c31905}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject">
+      <UniqueIdentifier>{7bca8cb6-eff0-49a9-b290-16149d5b40ff}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

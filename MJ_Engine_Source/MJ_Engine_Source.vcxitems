@@ -29,6 +29,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_SpriteRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Time.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Transform.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Object.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Application.cpp" />

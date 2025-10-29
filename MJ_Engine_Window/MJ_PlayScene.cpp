@@ -5,6 +5,7 @@
 #include "MJ_Input.h"
 #include "MJ_TitleScene.h"
 #include "MJ_SceneManager.h"
+#include "MJ_Object.h"
 
 namespace MJ{
 	PlayScene::PlayScene()
@@ -15,16 +16,12 @@ namespace MJ{
 	}
 	void PlayScene::Initialize()
 	{
-		bg = new Player();
-		Transform* tr = bg->AddComponent < Transform>();
-		tr->SetPos(Vector2(0, 0));
-
-		tr->SetName(L"TR");
-
+		bg = object::Instantiate<Player>(enums::eLayerType::BackGround, Vector2(100.0f, 100.0f));
 		SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();
 		sr->SetName(L"SR");
 		sr->ImageLoad(L"C:\\Users\\JEI\\source\\repos\\Oneiric0102\\MJ_Engine\\Resources\\CloudOcean.png");
-		AddGameObject(bg, eLayerType::BackGround);
+
+		Scene::Initialize();
 	}
 	void PlayScene::Update()
 	{
@@ -48,7 +45,5 @@ namespace MJ{
 
 	}
 	void PlayScene::OnExit() {
-		Transform* tr = bg->GetComponent<Transform>();
-		tr->SetPos(Vector2(0, 0));
 	}
 }

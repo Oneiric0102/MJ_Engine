@@ -1,6 +1,6 @@
 #pragma once
 
-namespace MJ {
+namespace MJ::enums {
 	enum class eLayerType
 	{
 		None,
