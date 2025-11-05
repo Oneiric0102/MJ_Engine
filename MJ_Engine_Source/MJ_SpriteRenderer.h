@@ -1,6 +1,7 @@
 #pragma once
 #include "MJ_Entity.h"
 #include "MJ_Component.h"
+#include "MJ_Texture.h"
 
 namespace MJ {
 	class SpriteRenderer : public Component {
@@ -13,13 +14,11 @@ namespace MJ {
 		void LateUpdate() override;
 		void Render(HDC hdc) override;
 
-		void ImageLoad(const std::wstring& path);
+		void SetTexture(graphics::Texture* texture) { mTexture = texture; }
+		void SetSize(math::Vector2 size) { mSize = size; }
 
 	private:
-		Gdiplus::Image* mImage;
-		UINT mWidth;
-		UINT mHeight;
-
-
+		graphics::Texture* mTexture;
+		math::Vector2 mSize;
 	};
 }

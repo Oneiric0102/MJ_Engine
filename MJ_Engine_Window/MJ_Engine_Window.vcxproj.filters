@@ -12,6 +12,7 @@
     <ClInclude Include="MJ_PlayScene.h" />
     <ClInclude Include="MJ_Player.h" />
     <ClInclude Include="MJ_TitleScene.h" />
+    <ClInclude Include="MJ_LoadResources.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MJ_PlayScene.cpp" />

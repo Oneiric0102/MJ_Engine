@@ -4,8 +4,9 @@
 #include "framework.h"
 #include "Editor_Window.h"
 
-#include "..\\MJ_Engine_Source\MJ_Application.h"
-#include "..\\MJ_Engine_Window\MJ_LoadScenes.h"
+#include "..\\MJ_Engine_Source\\MJ_Application.h"
+#include "..\\MJ_Engine_Window\\MJ_LoadResources.h"
+#include "..\\MJ_Engine_Window\\MJ_LoadScenes.h"
 
 MJ::Application application;
 
@@ -131,7 +132,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
    Gdiplus::GdiplusStartup(&gpToken, &gpsi, NULL);
 
-   //load Scene
+   MJ::LoadResources();
    MJ::LoadScenes();
 
    return TRUE;

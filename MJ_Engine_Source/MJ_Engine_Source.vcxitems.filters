@@ -1,11 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Application.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Component.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Input.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Layer.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Resource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Scene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)MJ_SceneManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)MJ_SpriteRenderer.cpp" />
@@ -20,13 +17,25 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)MJ_GameObject.cpp">
       <Filter>GameObject</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Application.cpp">
+      <Filter>High Level Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Layer.cpp">
+      <Filter>Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Resource.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Resources.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Texture.cpp">
+      <Filter>Resource\Texture</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Application.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Component.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Input.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Layer.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Resource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Scene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_SceneManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_SpriteRenderer.h" />
@@ -48,6 +57,21 @@
       <Filter>GameObject</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Object.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Application.h">
+      <Filter>High Level Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Layer.h">
+      <Filter>Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Resource.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Resources.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Texture.h">
+      <Filter>Resource\Texture</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Common">
@@ -55,6 +79,18 @@
     </Filter>
     <Filter Include="GameObject">
       <UniqueIdentifier>{7bca8cb6-eff0-49a9-b290-16149d5b40ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="High Level Interface">
+      <UniqueIdentifier>{31a848bd-5bbc-4ac2-b4de-977346585146}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Layer">
+      <UniqueIdentifier>{2403c001-7926-47de-8e23-7567201330c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{03a11b5c-79ee-4a9b-8e43-84deaa027516}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Texture">
+      <UniqueIdentifier>{4a6a9d05-257b-415a-bd3b-be3dff2a3026}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

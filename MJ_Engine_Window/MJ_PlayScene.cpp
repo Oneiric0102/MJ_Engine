@@ -6,6 +6,8 @@
 #include "MJ_TitleScene.h"
 #include "MJ_SceneManager.h"
 #include "MJ_Object.h"
+#include "MJ_Texture.h"
+#include "MJ_Resources.h"
 
 namespace MJ{
 	PlayScene::PlayScene()
@@ -16,11 +18,12 @@ namespace MJ{
 	}
 	void PlayScene::Initialize()
 	{
-		bg = object::Instantiate<Player>(enums::eLayerType::BackGround, Vector2(100.0f, 100.0f));
+		bg = object::Instantiate<Player>(enums::eLayerType::BackGround);
 		SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();
 		sr->SetName(L"SR");
-		sr->ImageLoad(L"C:\\Users\\JEI\\source\\repos\\Oneiric0102\\MJ_Engine\\Resources\\CloudOcean.png");
 
+		graphics::Texture* bg = Resources::Find<graphics::Texture>(L"BG");
+		sr->SetTexture(bg);
 		Scene::Initialize();
 	}
 	void PlayScene::Update()

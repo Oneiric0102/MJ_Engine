@@ -24,9 +24,11 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Layer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Math.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Resource.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Resources.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Scene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_SceneManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_SpriteRenderer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Texture.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Time.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Transform.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Object.h" />
@@ -40,9 +42,11 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Layer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Math.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Resource.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Resources.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Scene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)MJ_SceneManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)MJ_SpriteRenderer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Texture.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Time.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Transform.cpp" />
   </ItemGroup>
