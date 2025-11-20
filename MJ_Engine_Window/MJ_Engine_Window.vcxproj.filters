@@ -4,19 +4,45 @@
     <Filter Include="Scenes">
       <UniqueIdentifier>{8cb5dcf9-36c2-44a7-bfdd-f916b5a05f4a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents">
+      <UniqueIdentifier>{223eda63-fe47-4217-bdf5-fda869983cd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scripts">
+      <UniqueIdentifier>{7a9db49b-528c-4dd9-aea4-c49682aa1410}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MJ_LoadScenes.h">
       <Filter>Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="MJ_PlayScene.h" />
-    <ClInclude Include="MJ_Player.h" />
-    <ClInclude Include="MJ_TitleScene.h" />
-    <ClInclude Include="MJ_LoadResources.h" />
+    <ClInclude Include="MJ_PlayScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="MJ_TitleScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="MJ_LoadResources.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="MJ_Player.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="MJ_PlayerScript.h">
+      <Filter>Scripts</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MJ_PlayScene.cpp" />
-    <ClCompile Include="MJ_Player.cpp" />
-    <ClCompile Include="MJ_TitleScene.cpp" />
+    <ClCompile Include="MJ_PlayScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="MJ_TitleScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="MJ_Player.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="MJ_PlayerScript.cpp">
+      <Filter>Scripts</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

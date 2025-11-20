@@ -8,6 +8,9 @@
 #include "MJ_Object.h"
 #include "MJ_Texture.h"
 #include "MJ_Resources.h"
+#include "MJ_PlayerScript.h"
+#include "MJ_Camera.h"
+#include "MJ_Renderer.h"
 
 namespace MJ{
 	PlayScene::PlayScene()
@@ -18,12 +21,25 @@ namespace MJ{
 	}
 	void PlayScene::Initialize()
 	{
-		bg = object::Instantiate<Player>(enums::eLayerType::BackGround);
-		SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();
-		sr->SetName(L"SR");
+		GameObject* camera = object::Instantiate<GameObject>(enums::eLayerType::None, Vector2(344.0f, 442.0f));
+		Camera* cameraComp = camera->AddComponent<Camera>();
+		renderer::mainCamera = cameraComp;
 
-		graphics::Texture* bg = Resources::Find<graphics::Texture>(L"BG");
-		sr->SetTexture(bg);
+		mPlayer = object::Instantiate<Player>(enums::eLayerType::Player);
+		SpriteRenderer* sr = mPlayer->AddComponent <SpriteRenderer>();
+		sr->SetSize(Vector2(3.0f, 3.0f));
+		mPlayer->AddComponent<PlayerScript>();
+
+		graphics::Texture* pacmanTexture = Resources::Find<graphics::Texture>(L"PacMan");
+		sr->SetTexture(pacmanTexture);
+
+		GameObject* bg = object::Instantiate<GameObject>(enums::eLayerType::BackGround);
+		SpriteRenderer* bgSr = bg->AddComponent<SpriteRenderer>();
+		bgSr->SetSize(Vector2(3.0f, 3.0f));
+
+		graphics::Texture* bgTexture = Resources::Find<graphics::Texture>(L"Map");
+		bgSr->SetTexture(bgTexture);
+
 		Scene::Initialize();
 	}
 	void PlayScene::Update()
@@ -41,8 +57,6 @@ namespace MJ{
 	void PlayScene::Render(HDC hdc)
 	{
 		Scene::Render(hdc);
-		wchar_t str[50] = L"PlayScene";
-		TextOut(hdc, 0, 0, str, 10);
 	}
 	void PlayScene::OnEnter() {
 

@@ -5,7 +5,7 @@
 
 namespace MJ {
 	SpriteRenderer::SpriteRenderer()
-		: Component()
+		: Component(enums::eComponentType::SpriteRenderer)
 		, mTexture(nullptr)
 		, mSize(Vector2::One)
 	{

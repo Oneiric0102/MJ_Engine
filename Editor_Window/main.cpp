@@ -118,8 +118,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
       CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
     
 
-   const UINT width = 1600;
-   const UINT height = 900;
+   const UINT width = 672;
+   const UINT height = 846;
    application.Initialize(hWnd, width, height);
 
    if (!hWnd)

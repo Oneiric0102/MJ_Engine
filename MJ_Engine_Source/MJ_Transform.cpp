@@ -2,6 +2,7 @@
 
 namespace MJ {
 	Transform::Transform()
+		:Component(enums::eComponentType::Transform)
 	{
 	}
 
