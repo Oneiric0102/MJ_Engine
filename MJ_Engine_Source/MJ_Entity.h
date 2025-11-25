@@ -1,5 +1,6 @@
 #pragma once
 #include "CommonInclude.h"
+using namespace MJ::math;
 
 namespace MJ {
 	class Entity

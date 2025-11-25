@@ -4,6 +4,7 @@ namespace MJ::enums {
 	enum class eComponentType {
 		Transform,
 		SpriteRenderer,
+		Animator,
 		Script,
 		Camera,
 		End,
@@ -19,6 +20,7 @@ namespace MJ::enums {
 	enum class eResourceType {
 		Texture,
 		AudioClip,
+		Animation,
 		Prefab,
 		End,
 	};

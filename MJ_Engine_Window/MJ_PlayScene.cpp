@@ -1,4 +1,5 @@
 #include "MJ_PlayScene.h"
+#include "MJ_GameObject.h"
 #include "MJ_Player.h"
 #include "MJ_Transform.h"
 #include "MJ_SpriteRenderer.h"
@@ -11,6 +12,7 @@
 #include "MJ_PlayerScript.h"
 #include "MJ_Camera.h"
 #include "MJ_Renderer.h"
+#include "MJ_Animator.h"
 
 namespace MJ{
 	PlayScene::PlayScene()
@@ -26,12 +28,15 @@ namespace MJ{
 		renderer::mainCamera = cameraComp;
 
 		mPlayer = object::Instantiate<Player>(enums::eLayerType::Player);
-		SpriteRenderer* sr = mPlayer->AddComponent <SpriteRenderer>();
-		sr->SetSize(Vector2(3.0f, 3.0f));
+		/*SpriteRenderer* sr = mPlayer->AddComponent <SpriteRenderer>();
+		sr->SetSize(Vector2(3.0f, 3.0f));*/
 		mPlayer->AddComponent<PlayerScript>();
 
-		graphics::Texture* pacmanTexture = Resources::Find<graphics::Texture>(L"PacMan");
-		sr->SetTexture(pacmanTexture);
+		graphics::Texture* catTexture = Resources::Find<graphics::Texture>(L"Cat");
+		Animator* animator = mPlayer->AddComponent<Animator>();
+		animator->CreateAnimation(L"CatFrontMove", catTexture, Vector2(0.0f, 0.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.5f);
+
+		animator->PlayAnimation(L"CatFrontMove", true);
 
 		GameObject* bg = object::Instantiate<GameObject>(enums::eLayerType::BackGround);
 		SpriteRenderer* bgSr = bg->AddComponent<SpriteRenderer>();

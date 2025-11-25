@@ -53,6 +53,12 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Script.cpp">
       <Filter>Component\Script</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Animator.cpp">
+      <Filter>Component\Animator</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Animation.cpp">
+      <Filter>Resource\Animation</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -116,6 +122,12 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Script.h">
       <Filter>Component\Script</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Animator.h">
+      <Filter>Component\Animator</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Animation.h">
+      <Filter>Resource\Animation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Common">
@@ -156,6 +168,12 @@
     </Filter>
     <Filter Include="Scene">
       <UniqueIdentifier>{b2a510c4-25a3-4478-88af-8a81ce475475}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Animator">
+      <UniqueIdentifier>{c4842d0f-79bd-4fcb-b5ce-9c9b4760b177}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Animation">
+      <UniqueIdentifier>{56aec5b2-a7a6-476d-af22-28e87951fa44}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
