@@ -2,6 +2,7 @@
 #include "MJ_Input.h"
 #include "MJ_Time.h"
 #include "MJ_SceneManager.h"
+#include "MJ_Resources.h"
 
 namespace MJ {
 	Application::Application()
@@ -26,6 +27,7 @@ namespace MJ {
 		Update();
 		LateUpdate();
 		Render();
+		Destroy();
 	}
 	void Application::Update() {
 		Input::Update();
@@ -40,6 +42,17 @@ namespace MJ {
 		Time::Render(mBackHdc);
 		SceneManager::Render(mBackHdc);
 		copyRenderTarget(mBackHdc, mHdc);
+	}
+
+	void Application::Destroy()
+	{
+		SceneManager::Destroy();
+	}
+
+	void Application::Release()
+	{
+		SceneManager::Release();
+		Resources::Release();
 	}
 
 	void Application::clearRenderTarget() {

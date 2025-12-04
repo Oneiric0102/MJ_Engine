@@ -33,6 +33,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 {
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
+    _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
     // TODO: 여기에 코드를 입력합니다.
 
@@ -68,6 +69,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     }
 
     Gdiplus::GdiplusShutdown(gpToken);
+    application.Release();
 
     return (int) msg.wParam;
 }
@@ -134,6 +136,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
    MJ::LoadResources();
    MJ::LoadScenes();
+
+   int a = 0;
+   srand((unsigned int)(&a));
 
    return TRUE;
 }

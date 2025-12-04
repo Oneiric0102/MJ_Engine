@@ -4,12 +4,14 @@
 #include "MJ_Transform.h"
 namespace MJ {
 	GameObject::GameObject()
+		:mState(eState::Active)
 	{
 		mComponents.resize((UINT)enums::eComponentType::End);
 		initializeTransform();
 	}
 	GameObject::~GameObject() {
 		for (Component* comp : mComponents) {
+			if (comp == nullptr) continue;
 			delete comp;
 			comp = nullptr;
 		}

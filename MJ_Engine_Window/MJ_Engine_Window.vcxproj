@@ -128,6 +128,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="MJ_Cat.h" />
+    <ClInclude Include="MJ_CatScript.h" />
     <ClInclude Include="MJ_LoadResources.h" />
     <ClInclude Include="MJ_LoadScenes.h" />
     <ClInclude Include="MJ_Player.h" />
@@ -136,6 +138,8 @@
     <ClInclude Include="MJ_TitleScene.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="MJ_Cat.cpp" />
+    <ClCompile Include="MJ_CatScript.cpp" />
     <ClCompile Include="MJ_Player.cpp" />
     <ClCompile Include="MJ_PlayerScript.cpp" />
     <ClCompile Include="MJ_PlayScene.cpp" />

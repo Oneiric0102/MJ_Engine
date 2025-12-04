@@ -1,10 +1,14 @@
 #include "MJ_Input.h"
+#include "MJ_Application.h"
+
+extern MJ::Application application;
 namespace MJ {
 	std::vector<Input::Key> Input::Keys = {};
+	math::Vector2 Input::mMousePosition = math::Vector2::One;
 
 	char ASCII[(int)eKeyCode::End] = {
 		'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M',
-		VK_LEFT, VK_RIGHT, VK_DOWN, VK_UP,
+		VK_LEFT, VK_RIGHT, VK_DOWN, VK_UP, VK_LBUTTON, VK_MBUTTON, VK_RBUTTON,
 	};
 
 	void Input::Initailize() {
@@ -33,12 +37,18 @@ namespace MJ {
 	}
 	void Input::updateKey(Input::Key& key){
 		//키가 눌린 경우
-		if (isKeyDown(key.keyCode)) {
-			updateKeyDown(key);
+		if(GetFocus())
+		{
+			if (isKeyDown(key.keyCode)) 
+				updateKeyDown(key);
+			else 
+				updateKeyUp(key);
+
+			getMousePositionByWindow();
 		}
 		//키가 안눌린 경우
 		else {
-			updateKeyUp(key);
+			clearKeys();
 		}
 	}
 	bool Input::isKeyDown(eKeyCode code){
@@ -63,5 +73,30 @@ namespace MJ {
 		}
 
 		key.bPressed = false;
+	}
+	void Input::getMousePositionByWindow()
+	{
+		POINT mousePos = {};
+		GetCursorPos(&mousePos);
+		ScreenToClient(application.GetHwnd(), &mousePos);
+
+		mMousePosition.x = mousePos.x;
+		mMousePosition.y = mousePos.y;
+	}
+	void Input::clearKeys()
+	{
+		for (Key& key : Keys)
+		{
+			if (key.state == eKeyState::Down || key.state == eKeyState::Pressed)
+			{
+				key.state = eKeyState::Up;
+			} 
+			else if (key.state == eKeyState::Up)
+			{
+				key.state = eKeyState::None;
+			}
+
+			key.bPressed = false;
+		}
 	}
 }

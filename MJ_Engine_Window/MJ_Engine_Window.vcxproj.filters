@@ -30,6 +30,12 @@
     <ClInclude Include="MJ_PlayerScript.h">
       <Filter>Scripts</Filter>
     </ClInclude>
+    <ClInclude Include="MJ_Cat.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="MJ_CatScript.h">
+      <Filter>Scripts</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MJ_PlayScene.cpp">
@@ -42,6 +48,12 @@
       <Filter>Contents</Filter>
     </ClCompile>
     <ClCompile Include="MJ_PlayerScript.cpp">
+      <Filter>Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="MJ_Cat.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="MJ_CatScript.cpp">
       <Filter>Scripts</Filter>
     </ClCompile>
   </ItemGroup>

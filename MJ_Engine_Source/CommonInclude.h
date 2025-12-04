@@ -6,6 +6,8 @@
 #include <algorithm>
 #include <string>
 #include <map>
+#include <functional>
+#include <filesystem>
 
 #include "MJ_Math.h"
 

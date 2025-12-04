@@ -8,6 +8,11 @@ namespace MJ {
 	}
 	Scene::~Scene()
 	{
+		for (Layer* layer : mLayers)
+		{
+			delete layer;
+			layer = nullptr;
+		}
 	}
 	void Scene::Initialize() {
 		for (Layer* layer : mLayers) {
@@ -36,6 +41,15 @@ namespace MJ {
 			if (layer == nullptr) continue;
 
 			layer->Render(hdc);
+		}
+	}
+	void Scene::Destroy()
+	{
+		for (Layer* layer : mLayers)
+		{
+			if (layer == nullptr) continue;
+
+			layer->Destroy();
 		}
 	}
 	void Scene::AddGameObject(GameObject* gameObj, const enums::eLayerType type)
