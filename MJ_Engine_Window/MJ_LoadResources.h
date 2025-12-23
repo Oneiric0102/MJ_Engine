@@ -6,5 +6,6 @@ namespace MJ {
 	void LoadResources() {
 		Resources::Load<graphics::Texture>(L"Cat", L"..\\Resources\\CatAlpha.bmp");
 		Resources::Load<graphics::Texture>(L"Player", L"..\\Resources\\Player.bmp");
+		Resources::Load<graphics::Texture>(L"SpringFloor", L"..\\Resources\\SpringFloor.bmp");
 	}
 }

@@ -12,6 +12,8 @@ namespace MJ {
 		, mAnimator(nullptr)
 		, mTime(0.0f)
 		, mDeathTime(0.0f)
+		, mDest(Vector2::Zero)
+		, mRadian(0.0f)
 	{
 
 	}
@@ -28,7 +30,6 @@ namespace MJ {
 		mDeathTime += Time::DeltaTime();
 		if (mDeathTime > 6.0f)
 		{
-			object::Destroy(GetOwner());
 		}
 		if (mAnimator == nullptr)
 		{
@@ -64,13 +65,13 @@ namespace MJ {
 	void CatScript::sitDown()
 	{
 		mTime += Time::DeltaTime();
-		if (mTime > 3.0f) {
-			mState = CatScript::eState::Walk;
-			int direction = (rand() % 4);
-			mDirection = (eDirection)direction;
-			PlayWalkAnimationByDirection(mDirection);
-			mTime = 0.0f;
+		if (mTime > 2.0f) 
+		{
+
 		}
+
+		Transform* tr = GetOwner()->GetComponent < Transform>();
+		Vector2 pos = tr->GetPosition();
 	}
 	void CatScript::move() {
 		mTime += Time::DeltaTime();

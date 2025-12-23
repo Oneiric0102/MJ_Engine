@@ -3,6 +3,7 @@
 #include "MJ_Time.h"
 #include "MJ_SceneManager.h"
 #include "MJ_Resources.h"
+#include "MJ_CollisionManager.h"
 
 namespace MJ {
 	Application::Application()
@@ -22,6 +23,9 @@ namespace MJ {
 		adjustWindowRect(hwnd, width, height);
 		createBuffer(width, height);
 		initializeEtc();
+
+		CollisionManager::Initialize();
+		SceneManager::Initialize();
 	}
 	void Application::Run() {
 		Update();
@@ -32,14 +36,17 @@ namespace MJ {
 	void Application::Update() {
 		Input::Update();
 		Time::Update();
+		CollisionManager::Update();
 		SceneManager::Update();
 	}
 	void Application::LateUpdate() {
+		CollisionManager::LateUpdate();
 		SceneManager::LateUpdate();
 	}
 	void Application::Render() {
 		clearRenderTarget();
 		Time::Render(mBackHdc);
+		CollisionManager::Render(mBackHdc);
 		SceneManager::Render(mBackHdc);
 		copyRenderTarget(mBackHdc, mHdc);
 	}
@@ -56,7 +63,13 @@ namespace MJ {
 	}
 
 	void Application::clearRenderTarget() {
+		HBRUSH grayBrush = (HBRUSH)CreateSolidBrush(RGB(128, 128, 128));
+		HBRUSH oldBrush = (HBRUSH)SelectObject(mBackHdc, grayBrush);
+
 		Rectangle(mBackHdc, -1, -1, 1601, 901);
+
+		(HBRUSH)SelectObject(mBackHdc, oldBrush);
+		DeleteObject(grayBrush);
 	}
 
 	void Application::copyRenderTarget(HDC source, HDC dest) {
@@ -90,6 +103,5 @@ namespace MJ {
 	void Application::initializeEtc() {
 		Input::Initailize();
 		Time::Initialize();
-		SceneManager::Initialize();
 	}
 }

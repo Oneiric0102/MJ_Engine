@@ -1,11 +1,19 @@
 #pragma once
 #include "CommonInclude.h"
 #include "MJ_Component.h"
+#include "MJ_Collider.h"
+
+namespace MJ::object
+{
+	void Destroy(GameObject* gameObject);
+}
 
 namespace MJ {
-	class GameObject
+	class GameObject : public Entity
 	{
 	public:
+		friend void object::Destroy(GameObject* obj);
+
 		enum class eState
 		{
 			Active,
@@ -43,21 +51,26 @@ namespace MJ {
 			return component;
 		}
 
-		eState GetActive() { return mState; }
+		eState GetState() { return mState; }
 		void SetActive(bool power)
 		{
 			if (power == true) mState = eState::Active;
 			if (power == false) mState = eState::Paused;
 		}
-		void Death() { mState = eState::Dead; }
+
+		bool IsActive() { return mState == eState::Active; }
+		bool IsDead() { return mState == eState::Dead; }
+
+		void SetLayerType(eLayerType layerType) { mLayerType = layerType; }
+		eLayerType GetLayerType() { return mLayerType; }
 
 	private:
 		void initializeTransform();
+		void death() { mState = eState::Dead; }
 
 	private:
 		eState mState;
 		std::vector<Component*> mComponents;
+		eLayerType mLayerType;
 	};
 }
-
-

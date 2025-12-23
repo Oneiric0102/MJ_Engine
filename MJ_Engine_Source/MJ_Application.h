@@ -40,5 +40,3 @@ namespace MJ {
 		std::vector<GameObject*> mGameObjects;
 	};
 }
-
-

@@ -15,6 +15,14 @@
 #include "MJ_Animator.h"
 #include "MJ_Cat.h"
 #include "MJ_CatScript.h"
+#include "MJ_BoxCollider2D.h"
+#include "MJ_CircleCollider2D.h"
+#include "MJ_CollisionManager.h"
+#include "MJ_Tile.h"
+#include "MJ_TilemapRenderer.h"
+#include "MJ_Rigidbody.h"
+#include "MJ_Floor.h"
+#include "MJ_FloorScript.h"
 
 namespace MJ{
 	PlayScene::PlayScene()
@@ -25,12 +33,16 @@ namespace MJ{
 	}
 	void PlayScene::Initialize()
 	{
-		GameObject* camera = object::Instantiate<GameObject>(enums::eLayerType::Player, Vector2(344.0f, 442.0f));
+		GameObject* camera = object::Instantiate<GameObject>(enums::eLayerType::Particle, Vector2(344.0f, 442.0f));
 		Camera* cameraComp = camera->AddComponent<Camera>();
 		renderer::mainCamera = cameraComp;
 
 		mPlayer = object::Instantiate<Player>(enums::eLayerType::Player);
+		object::DontDestroyOnLoad(mPlayer);
 		PlayerScript* plScript = mPlayer->AddComponent<PlayerScript>();
+		BoxCollider2D* playerCollider = mPlayer->AddComponent<BoxCollider2D>();
+		playerCollider->SetSize(Vector2(0.5f, 0.5f));
+		playerCollider->SetOffset(Vector2(-87.5f, -87.5f));
 
 		graphics::Texture* playerTex = Resources::Find<graphics::Texture>(L"Player");
 		Animator* playerAnimator = mPlayer->AddComponent<Animator>();
@@ -38,21 +50,16 @@ namespace MJ{
 		playerAnimator->CreateAnimation(L"FrontGiveWater", playerTex, Vector2(0.0f, 2000.0f), Vector2(250.0f, 250.0f), Vector2::Zero, 12, 0.1f);
 		playerAnimator->PlayAnimation(L"Idle", false);
 		playerAnimator->GetCompleteEvent(L"FrontGiveWater") = std::bind(&PlayerScript::AttackEffect, plScript);
-		mPlayer->GetComponent<Transform>()->SetPosition(Vector2(100.0f, 100.0f));
-		mPlayer->GetComponent<Transform>()->SetScale(Vector2(1.0f, 1.0f));
+		mPlayer->GetComponent<Transform>()->SetPosition(Vector2(500.0f, 250.0f));
+		mPlayer->GetComponent<Transform>()->SetScale(Vector2(0.5f, 0.5f));
 
-		Cat* cat = object::Instantiate<Cat>(enums::eLayerType::Animal);
-		cat->AddComponent<CatScript>();
-
-		graphics::Texture* catTex = Resources::Find<graphics::Texture>(L"Cat");
-		Animator* catAnimator = cat->AddComponent<Animator>();
-
-		catAnimator->CreateAnimationByFolder(L"MushroomIdle", L"..\\Resources\\Mushroom", Vector2::Zero, 0.1f);
-
-		catAnimator->PlayAnimation(L"MushroomIdle", true);
-
-		cat->GetComponent<Transform>()->SetPosition(Vector2(200.0f, 200.0f));
-		cat->GetComponent<Transform>()->SetScale(Vector2(2.0f, 2.0f));
+		mPlayer->AddComponent<Rigidbody>();
+		
+		Floor* floor = object::Instantiate<Floor>(eLayerType::Floor, Vector2(100.0f, 600.0f));
+		floor->SetName(L"Floor");
+		BoxCollider2D* floorCol = floor->AddComponent<BoxCollider2D>();
+		floorCol->SetSize(Vector2(3.0f, 1.0f));
+		floor->AddComponent<FloorScript>();
 
 		Scene::Initialize();
 	}
@@ -73,8 +80,12 @@ namespace MJ{
 		Scene::Render(hdc);
 	}
 	void PlayScene::OnEnter() {
+		Scene::OnEnter();
 
+		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Animal, true);
+		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Floor, true);
 	}
 	void PlayScene::OnExit() {
+		Scene::OnExit();
 	}
 }

@@ -14,31 +14,37 @@ namespace MJ {
 		, mAnimationSheet{}
 		, mIndex(-1)
 		, mTime(0.0f)
-		, mbComplete(false) {
+		, mbComplete(false) 
+	{
 
 	}
 
-	Animation::~Animation() {
+	Animation::~Animation() 
+	{
 
 	}
 
-	HRESULT Animation::Load(const std::wstring& path) {
+	HRESULT Animation::Load(const std::wstring& path) 
+	{
 		return E_NOTIMPL;
 	}
 
-	void Animation::Update() {
+	void Animation::Update() 
+	{
 		if (mbComplete) return;
 
 		mTime += Time::DeltaTime();
 
-		if (mAnimationSheet[mIndex].duration < mTime) {
+		if (mAnimationSheet[mIndex].duration < mTime) 
+		{
 			mTime = 0.0f;
 			if (mIndex < mAnimationSheet.size() - 1) mIndex++;
 			else mbComplete = true;
 		}
 	}
 
-	void Animation::Render(HDC hdc) {
+	void Animation::Render(HDC hdc) 
+	{
 		if (mTexture == nullptr) return;
 
 		GameObject* gameObj = mAnimator->GetOwner();
@@ -54,17 +60,43 @@ namespace MJ {
 		if (type == graphics::Texture::eTextureType::Bmp) {
 			HDC imgHdc = mTexture->GetHdc();
 
-			TransparentBlt(hdc
-				, pos.x - (sprite.size.x / 2.0f)
-				, pos.y - (sprite.size.y / 2.0f)
-				, sprite.size.x * scale.x
-				, sprite.size.y * scale.y
-				, imgHdc
-				, sprite.leftTop.x
-				, sprite.leftTop.y
-				, sprite.size.x
-				, sprite.size.y
-				, RGB(255, 0, 255));
+			if (mTexture->IsAlpha()) {
+				BLENDFUNCTION func = {};
+				func.BlendOp = AC_SRC_OVER;
+				func.BlendFlags = 0;
+				func.AlphaFormat = AC_SRC_ALPHA;
+				func.SourceConstantAlpha = 255;
+
+				AlphaBlend(hdc
+					, pos.x - (sprite.size.x / 2.0f) + sprite.offset.x
+					, pos.y - (sprite.size.y / 2.0f) + sprite.offset.y
+					, sprite.size.x * scale.x
+					, sprite.size.y * scale.y
+					, imgHdc
+					, sprite.leftTop.x
+					, sprite.leftTop.y
+					, sprite.size.x
+					, sprite.size.y
+					, func
+				);
+			}
+			else
+			{
+				TransparentBlt(hdc
+					, pos.x - (sprite.size.x / 2.0f)
+					, pos.y - (sprite.size.y / 2.0f)
+					, sprite.size.x * scale.x
+					, sprite.size.y * scale.y
+					, imgHdc
+					, sprite.leftTop.x
+					, sprite.leftTop.y
+					, sprite.size.x
+					, sprite.size.y
+					, RGB(255, 0, 255)
+				);
+
+				Rectangle(hdc, pos.x, pos.y, pos.x + 10, pos.y + 10);
+			}
 		}
 		else if (type == graphics::Texture::eTextureType::Png) {
 			Gdiplus::ImageAttributes imgAtt = {};

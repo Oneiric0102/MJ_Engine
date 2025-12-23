@@ -2,9 +2,20 @@
 #include "MJ_Input.h"
 #include "MJ_Time.h"
 #include "MJ_Transform.h"
+
+namespace MJ::object
+{
+	void Destroy(GameObject* gameObject)
+	{
+		if (gameObject != nullptr)
+			gameObject->death();
+	}
+}
+
 namespace MJ {
 	GameObject::GameObject()
 		:mState(eState::Active)
+		, mLayerType(eLayerType::None)
 	{
 		mComponents.resize((UINT)enums::eComponentType::End);
 		initializeTransform();

@@ -49,7 +49,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Camera.cpp">
       <Filter>Component\Camera</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Renderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Script.cpp">
       <Filter>Component\Script</Filter>
     </ClCompile>
@@ -58,6 +57,36 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Animation.cpp">
       <Filter>Resource\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Collider.cpp">
+      <Filter>Component\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_BoxCollider2D.cpp">
+      <Filter>Component\Collider\BoxCollider2D</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_CircleCollider2D.cpp">
+      <Filter>Component\Collider\CircleCollider2D</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_CollisionManager.cpp">
+      <Filter>Component\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Destroy.cpp">
+      <Filter>GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Renderer.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_DontDestroyOnLoad.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_TilemapRenderer.cpp">
+      <Filter>Component\TilemapRenderer</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Object.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Rigidbody.cpp">
+      <Filter>Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -91,9 +120,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Texture.h">
       <Filter>Resource\Texture</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Object.h">
-      <Filter>Common</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Component.h">
       <Filter>Component</Filter>
     </ClInclude>
@@ -118,7 +144,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Camera.h">
       <Filter>Component\Camera</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Renderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Script.h">
       <Filter>Component\Script</Filter>
     </ClInclude>
@@ -127,6 +152,36 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Animation.h">
       <Filter>Resource\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Collider.h">
+      <Filter>Component\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_BoxCollider2D.h">
+      <Filter>Component\Collider\BoxCollider2D</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_CircleCollider2D.h">
+      <Filter>Component\Collider\CircleCollider2D</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_CollisionManager.h">
+      <Filter>Component\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Destroy.h">
+      <Filter>GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Renderer.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_DontDestroyOnLoad.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_TilemapRenderer.h">
+      <Filter>Component\TilemapRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Object.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Rigidbody.h">
+      <Filter>Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -174,6 +229,21 @@
     </Filter>
     <Filter Include="Resource\Animation">
       <UniqueIdentifier>{56aec5b2-a7a6-476d-af22-28e87951fa44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Collider">
+      <UniqueIdentifier>{a510af18-e0d8-4306-831e-233dd1133976}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Collider\BoxCollider2D">
+      <UniqueIdentifier>{dade93b9-e780-4570-b764-fce2e1b7e015}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Collider\CircleCollider2D">
+      <UniqueIdentifier>{9b092967-7d15-4dbf-8e74-d8914c2ed975}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\TilemapRenderer">
+      <UniqueIdentifier>{60fc64d9-63ab-4492-a31c-686eb91571b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object">
+      <UniqueIdentifier>{3138d74e-6c99-4b5f-8566-78f4e8971035}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

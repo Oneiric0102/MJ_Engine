@@ -19,6 +19,8 @@ namespace MJ {
 
 		static Scene* LoadScene(const std::wstring& name);
 		static Scene* GetActiveScene() { return mActiveScene; }
+		static Scene* GetDontDestroyOnLoad() { return mDontDestroyOnLoad; }
+		static std::vector<GameObject*> GetGameObjects(eLayerType layer);
 
 		static void Initialize();
 		static void Update();
@@ -30,6 +32,7 @@ namespace MJ {
 	//private:
 		static std::map<std::wstring, Scene*> mScene;
 		static Scene* mActiveScene;
+		static Scene* mDontDestroyOnLoad;
 	};
 }
 

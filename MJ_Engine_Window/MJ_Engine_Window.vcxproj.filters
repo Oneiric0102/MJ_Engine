@@ -36,6 +36,21 @@
     <ClInclude Include="MJ_CatScript.h">
       <Filter>Scripts</Filter>
     </ClInclude>
+    <ClInclude Include="MJ_Tile.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="MJ_ToolScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="MJ_CameraScript.h">
+      <Filter>Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="MJ_Floor.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="MJ_FloorScript.h">
+      <Filter>Scripts</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MJ_PlayScene.cpp">
@@ -54,6 +69,21 @@
       <Filter>Contents</Filter>
     </ClCompile>
     <ClCompile Include="MJ_CatScript.cpp">
+      <Filter>Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="MJ_Tile.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="MJ_ToolScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="MJ_CameraScript.cpp">
+      <Filter>Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="MJ_Floor.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="MJ_FloorScript.cpp">
       <Filter>Scripts</Filter>
     </ClCompile>
   </ItemGroup>

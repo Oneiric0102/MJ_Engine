@@ -1,6 +1,8 @@
 #pragma once
 #include "MJ_Entity.h"
 namespace MJ {
+	using namespace enums;
+
 	class GameObject;
 	class Component : public Entity {
 	public:

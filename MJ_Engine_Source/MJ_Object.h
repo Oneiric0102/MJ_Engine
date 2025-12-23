@@ -10,6 +10,7 @@ namespace MJ::object {
 	template <typename T>
 	static T* Instantiate(enums::eLayerType type) {
 		T* gameObject = new T();
+		gameObject->SetLayerType(type);
 		Scene* activeScene = SceneManager::GetActiveScene();
 		Layer* layer = activeScene->GetLayer(type);
 		layer->AddGameObject(gameObject);
@@ -20,6 +21,7 @@ namespace MJ::object {
 	template <typename T>
 	static T* Instantiate(enums::eLayerType type, math::Vector2 position) {
 		static T* gameObject = new T();
+		gameObject->SetLayerType(type);
 		Scene* activeScene = SceneManager::GetActiveScene();
 		Layer* layer = activeScene->GetLayer(type);
 		layer->AddGameObject(gameObject);
@@ -30,9 +32,12 @@ namespace MJ::object {
 		return gameObject;
 	}
 
-	static void Destroy(GameObject* obj)
+	static void DontDestroyOnLoad(MJ::GameObject* gameObject)
 	{
-		obj->Death();
-	}
+		Scene* activeScene = SceneManager::GetActiveScene();
+		activeScene->EraseGameObject(gameObject);
 
+		Scene* dontDestroyOnLoad = SceneManager::GetDontDestroyOnLoad();
+		dontDestroyOnLoad->AddGameObject(gameObject, gameObject->GetLayerType());
+	}
 }

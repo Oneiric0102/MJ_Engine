@@ -5,8 +5,13 @@
 #include "Editor_Window.h"
 
 #include "..\\MJ_Engine_Source\\MJ_Application.h"
+#include "..\\MJ_Engine_Source\\MJ_Resources.h"
+#include "..\\MJ_Engine_Source\\MJ_Texture.h"
+#include "..\\MJ_Engine_Source\\MJ_SceneManager.h"
+
 #include "..\\MJ_Engine_Window\\MJ_LoadResources.h"
 #include "..\\MJ_Engine_Window\\MJ_LoadScenes.h"
+#include "..\\MJ_Engine_Window\\MJ_ToolScene.h"
 
 MJ::Application application;
 
@@ -21,8 +26,9 @@ WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입
 WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름입니다.
 
 // 이 코드 모듈에 포함된 함수의 선언을 전달합니다:
-ATOM                MyRegisterClass(HINSTANCE hInstance);
+ATOM                MyRegisterClass(HINSTANCE hInstance, const wchar_t* name, WNDPROC proc);
 BOOL                InitInstance(HINSTANCE, int);
+BOOL                InitToolScene(HINSTANCE);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
@@ -40,7 +46,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     // 전역 문자열을 초기화합니다.
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
     LoadStringW(hInstance, IDC_EDITORWINDOW, szWindowClass, MAX_LOADSTRING);
-    MyRegisterClass(hInstance);
+    MyRegisterClass(hInstance, szWindowClass, WndProc);
+    MyRegisterClass(hInstance, L"TILEWINDOW", WndTileProc);
 
     // 애플리케이션 초기화를 수행합니다:
     if (!InitInstance (hInstance, nCmdShow))
@@ -81,14 +88,14 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 //
 //  용도: 창 클래스를 등록합니다.
 //
-ATOM MyRegisterClass(HINSTANCE hInstance)
+ATOM MyRegisterClass(HINSTANCE hInstance, const wchar_t* name, WNDPROC proc)
 {
     WNDCLASSEXW wcex;
 
     wcex.cbSize = sizeof(WNDCLASSEX);
 
     wcex.style          = CS_HREDRAW | CS_VREDRAW;
-    wcex.lpfnWndProc    = WndProc;
+    wcex.lpfnWndProc    = proc;
     wcex.cbClsExtra     = 0;
     wcex.cbWndExtra     = 0;
     wcex.hInstance      = hInstance;
@@ -96,7 +103,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
     wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
     wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
     wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_EDITORWINDOW);
-    wcex.lpszClassName  = szWindowClass;
+    wcex.lpszClassName  = name;
     wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
     return RegisterClassExW(&wcex);
@@ -114,33 +121,61 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 //
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
-   hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
+    hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 
-   HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
-    
+    const UINT width = 672;
+    const UINT height = 846;
 
-   const UINT width = 672;
-   const UINT height = 846;
-   application.Initialize(hWnd, width, height);
+    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
+        CW_USEDEFAULT, 0, width, height, nullptr, nullptr, hInstance, nullptr);
 
-   if (!hWnd)
-   {
-      return FALSE;
-   }
+    application.Initialize(hWnd, width, height);
 
-   ShowWindow(hWnd, nCmdShow);
-   UpdateWindow(hWnd);
+    if (!hWnd)
+    {
+        return FALSE;
+    }
 
-   Gdiplus::GdiplusStartup(&gpToken, &gpsi, NULL);
+    ShowWindow(hWnd, nCmdShow);
+    UpdateWindow(hWnd);
 
-   MJ::LoadResources();
-   MJ::LoadScenes();
+    Gdiplus::GdiplusStartup(&gpToken, &gpsi, NULL);
 
-   int a = 0;
-   srand((unsigned int)(&a));
+    MJ::LoadResources();
+    MJ::LoadScenes();
 
-   return TRUE;
+    InitToolScene(hInstance);
+
+    int a = 0;
+    srand((unsigned int)(&a));
+
+    return TRUE;
+}
+
+BOOL InitToolScene(HINSTANCE hInstance)
+{
+    MJ::Scene* activeScene = MJ::SceneManager::GetActiveScene();
+    std::wstring name = activeScene->GetName();
+
+    if (name == L"ToolScene")
+    {
+        HWND ToolHWnd = CreateWindowW(L"TILEWINDOW", L"TileWindow", WS_OVERLAPPEDWINDOW, 0, 0
+            , CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
+
+        MJ::graphics::Texture* texture = MJ::Resources::Find<MJ::graphics::Texture>(L"SpringFloor");
+
+        RECT rect = { 0,0, texture->GetWidth(), texture->GetHeight() };
+        AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
+
+        UINT toolWidth = rect.right - rect.left;
+        UINT toolHeight = rect.bottom - rect.top;
+
+        SetWindowPos(ToolHWnd, nullptr, 672, 0, toolWidth, toolHeight, 0);
+        ShowWindow(ToolHWnd, true);
+        UpdateWindow(ToolHWnd);
+    }
+
+    return TRUE;
 }
 
 //

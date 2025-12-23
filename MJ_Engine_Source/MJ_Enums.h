@@ -3,9 +3,11 @@
 namespace MJ::enums {
 	enum class eComponentType {
 		Transform,
+		Colider,
+		Rigidbody,
+		Script,
 		SpriteRenderer,
 		Animator,
-		Script,
 		Camera,
 		End,
 	};
@@ -13,8 +15,10 @@ namespace MJ::enums {
 	{
 		None,
 		BackGround,
+		Tile,
 		Animal,
 		Player,
+		Floor,
 		Particle,
 		Max = 16,
 	};
@@ -24,6 +28,13 @@ namespace MJ::enums {
 		AudioClip,
 		Animation,
 		Prefab,
+		End,
+	};
+
+	enum class eColliderType
+	{
+		Circle2D,
+		Rect2D,
 		End,
 	};
 }
