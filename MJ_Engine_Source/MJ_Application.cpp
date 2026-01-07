@@ -4,6 +4,8 @@
 #include "MJ_SceneManager.h"
 #include "MJ_Resources.h"
 #include "MJ_CollisionManager.h"
+#include "MJ_UIManager.h"
+#include "MJ_Fmod.h"
 
 namespace MJ {
 	Application::Application()
@@ -24,7 +26,9 @@ namespace MJ {
 		createBuffer(width, height);
 		initializeEtc();
 
+		Fmod::Initialize();
 		CollisionManager::Initialize();
+		UIManager::Initialize();
 		SceneManager::Initialize();
 	}
 	void Application::Run() {
@@ -36,17 +40,21 @@ namespace MJ {
 	void Application::Update() {
 		Input::Update();
 		Time::Update();
+
 		CollisionManager::Update();
+		UIManager::Update();
 		SceneManager::Update();
 	}
 	void Application::LateUpdate() {
 		CollisionManager::LateUpdate();
+		UIManager::LateUpdate();
 		SceneManager::LateUpdate();
 	}
 	void Application::Render() {
 		clearRenderTarget();
 		Time::Render(mBackHdc);
 		CollisionManager::Render(mBackHdc);
+		UIManager::Render(mBackHdc);
 		SceneManager::Render(mBackHdc);
 		copyRenderTarget(mBackHdc, mHdc);
 	}
@@ -59,6 +67,7 @@ namespace MJ {
 	void Application::Release()
 	{
 		SceneManager::Release();
+		UIManager::Release();
 		Resources::Release();
 	}
 

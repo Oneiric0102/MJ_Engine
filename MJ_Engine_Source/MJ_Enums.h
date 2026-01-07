@@ -9,6 +9,8 @@ namespace MJ::enums {
 		SpriteRenderer,
 		Animator,
 		Camera,
+		AudioListener,
+		AudioSource,
 		End,
 	};
 	enum class eLayerType
@@ -35,6 +37,12 @@ namespace MJ::enums {
 	{
 		Circle2D,
 		Rect2D,
+		End,
+	};
+	enum class eUIType
+	{
+		HpBar,
+		Button,
 		End,
 	};
 }

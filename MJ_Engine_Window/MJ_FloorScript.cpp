@@ -7,6 +7,7 @@
 #include "MJ_GameObject.h"
 #include "MJ_Animator.h"
 #include "MJ_Rigidbody.h"
+#include "MJ_AudioSource.h"
 
 namespace MJ
 {
@@ -39,6 +40,10 @@ namespace MJ
 
 			playerTr->SetPosition(playerPos);
 		}
+
+		AudioSource* as = GetOwner()->GetComponent<AudioSource>();
+		as->SetLoop(true);
+		as->Play();
 
 		playerRb->SetGround(true);
 	}

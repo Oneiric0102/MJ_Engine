@@ -9,6 +9,7 @@
 #include "MJ_Object.h"
 #include "MJ_Resources.h"
 #include "MJ_Rigidbody.h"
+#include "MJ_UIManager.h"
 
 namespace MJ {
 	PlayerScript::PlayerScript()
@@ -152,6 +153,14 @@ namespace MJ {
 		if (Input::GetKey(eKeyCode::S))
 		{
 			rb->AddForce(Vector2(0.0f, -200.0f));
+		}
+		if (Input::GetKey(eKeyCode::I))
+		{
+			UIManager::Push(eUIType::HpBar);
+		}
+		if (Input::GetKey(eKeyCode::O))
+		{
+			UIManager::Pop(eUIType::HpBar);
 		}
 	}
 

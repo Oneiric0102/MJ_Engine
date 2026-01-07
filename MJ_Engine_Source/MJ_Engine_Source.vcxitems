@@ -18,6 +18,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Animation.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Animator.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Application.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_AudioClip.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_AudioListener.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_AudioSource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_BoxCollider2D.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Camera.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_CircleCollider2D.h" />
@@ -28,6 +31,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_DontDestroyOnLoad.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Entity.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Enums.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Fmod.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_GameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Input.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Layer.h" />
@@ -45,11 +49,18 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Time.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Transform.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MJ_Object.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_UIBase.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_UIButton.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_UIHUD.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)MJ_UIManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Animation.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Animator.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Application.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_AudioClip.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_AudioListener.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_AudioSource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)MJ_BoxCollider2D.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Camera.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)MJ_CircleCollider2D.cpp" />
@@ -59,6 +70,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Destroy.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)MJ_DontDestroyOnLoad.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Entity.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Fmod.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)MJ_GameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Input.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Layer.cpp" />
@@ -76,5 +88,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Time.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Transform.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)MJ_Renderer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_UIBase.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_UIButton.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_UIHUD.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)MJ_UIManager.cpp" />
   </ItemGroup>
 </Project>
