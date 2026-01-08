@@ -1,5 +1,6 @@
 #pragma once
 #include "..\\MJ_Engine_Source\\MJ_Script.h"
+#include "..\\MJ_Engine_Source\\MJ_Texture.h"
 
 namespace MJ
 {
@@ -27,6 +28,8 @@ namespace MJ
 		void OnCollisionEnter(Collider* other) override;
 		void OnCollisionStay(Collider* other) override;
 		void OnCollisionExit(Collider* other) override;
+
+		void SetPixelMapTexture(graphics::Texture* texture) { mPixelMap = texture; }
 	private:
 		void idle();
 		void move();
@@ -35,5 +38,6 @@ namespace MJ
 	private:
 		eState mState;
 		class Animator* mAnimator;
+		graphics::Texture* mPixelMap;
 	};
 }

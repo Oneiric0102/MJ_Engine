@@ -11,6 +11,7 @@ namespace MJ {
 		void Render(HDC hdc) override;
 
 	private :
+		int mHp;
 	};
 }
 
